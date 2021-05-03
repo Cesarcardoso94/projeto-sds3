@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src", //orienta que os arquivos que serão importadores, estarão dentro da pasta src
     "target": "es5",
     "lib": [
       "dom",
