@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tb_sellers")
 public class Seller {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -23,6 +22,10 @@ public class Seller {
 	private List<Sale> sales = new ArrayList<>();
 	
 
+public Seller () {
+	
+}
+	
 public Seller(Long id, String name) {
 	this.id = id;
 	this.name = name;
