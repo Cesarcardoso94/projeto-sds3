@@ -1,36 +1,24 @@
-package com.devsuperior.dsvendas.entities;
+package com.devsuperior.dsvendas.dto;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import com.devsuperior.dsvendas.entities.Sale;
 
-@Entity
-@Table(name = "tb_sales")
-public class Sale {
-	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+public class SaleDTO{
+
 	private Long id;
 	private int visited;
 	private int deals;
 	private double amount;
-	private LocalDate date;
+	private LocalDate date;	
 	
-	@ManyToOne  
-	@JoinColumn(name = "seller_id")
-	private Seller seller;
-
-	public Sale() {
+	private SellerDTO seller;
+	
+	public SaleDTO() {
 		
 	}
-	
-	public Sale(long id, int visited, int deals, double amount, LocalDate date, Seller seller) {
-	
+
+	public SaleDTO(Long id, int visited, int deals, double amount, LocalDate date, SellerDTO seller) {
 		this.id = id;
 		this.visited = visited;
 		this.deals = deals;
@@ -38,68 +26,63 @@ public class Sale {
 		this.date = date;
 		this.seller = seller;
 	}
-
+	
+	public SaleDTO(Sale entity) {
+		id = entity.getId();
+		visited =entity.getVisited();
+		deals = entity.getDeals();
+		amount = entity.getAmount();
+		date = entity.getDate();
+		seller = new SellerDTO(entity.getSeller());
+	}
 
 	public Long getId() {
 		return id;
 	}
 
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 
 	public int getVisited() {
 		return visited;
 	}
 
-
 	public void setVisited(int visited) {
 		this.visited = visited;
 	}
-
 
 	public int getDeals() {
 		return deals;
 	}
 
-
 	public void setDeals(int deals) {
 		this.deals = deals;
 	}
-
 
 	public double getAmount() {
 		return amount;
 	}
 
-
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-
 
 	public LocalDate getDate() {
 		return date;
 	}
 
-
 	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
-
-	public Seller getSeller() {
+	public SellerDTO getSeller() {
 		return seller;
 	}
 
-
-	public void setSeller(Seller seller) {
+	public void setSeller(SellerDTO seller) {
 		this.seller = seller;
 	}
-
-}
-
-
 	
+	
+}
